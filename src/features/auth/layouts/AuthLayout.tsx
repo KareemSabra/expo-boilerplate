@@ -1,5 +1,5 @@
-import Stack from "@/components/ui/Stack";
-import Text from "@/components/ui/Text";
+import Stack from "@/components/elements/Stack";
+import Text from "@/components/elements/Text";
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -47,9 +47,7 @@ export default function AuthLayout({
           }}
           gap={32}
         >
-          <Text type="title" style={{ textAlign: "center" }}>
-            {title}
-          </Text>
+          <Text alignment="center">{title}</Text>
           {children}
         </Stack>
       </View>

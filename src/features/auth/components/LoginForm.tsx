@@ -1,10 +1,11 @@
-import Button from "@/components/ui/Button";
-import Stack from "@/components/ui/Stack";
-import TextInput from "@/components/ui/TextInput";
+import Button from "@/components/elements/Button";
+import Stack from "@/components/elements/Stack";
+import TextInput from "@/components/elements/TextInput";
 import { Link } from "expo-router";
 import { appRoutes } from "@/constants/appRoutes";
 import { useState } from "react";
-import Text from "@/components/ui/Text";
+import Text from "@/components/elements/Text";
+import { useCountStore } from "@/features/home/hooks/useCountStore";
 
 export default function LoginForm() {
   // ----------------------------------------------------------------------------------------------------
@@ -12,6 +13,8 @@ export default function LoginForm() {
   // ----------------------------------------------------------------------------------------------------
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { count } = useCountStore();
 
   // ----------------------------------------------------------------------------------------------------
   // MARK: Functions
@@ -32,9 +35,11 @@ export default function LoginForm() {
           value={password}
           onChangeText={setPassword}
         />
+
+        <Text>{count.toString()}</Text>
       </Stack>
 
-      <Button buttonText="Sign In" onPress={handleSignIn} />
+      <Button onPress={handleSignIn}>Sign In</Button>
 
       <Stack direction="row">
         <Text>Create an account?</Text>

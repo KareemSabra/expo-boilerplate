@@ -1,7 +1,7 @@
-import Button from "@/components/ui/Button";
-import Stack from "@/components/ui/Stack";
-import Text from "@/components/ui/Text";
-import TextInput from "@/components/ui/TextInput";
+import Button from "@/components/elements/Button";
+import Stack from "@/components/elements/Stack";
+import Text from "@/components/elements/Text";
+import TextInput from "@/components/elements/TextInput";
 import { appRoutes } from "@/constants/appRoutes";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -39,7 +39,7 @@ export default function RegisterForm() {
         />
       </Stack>
 
-      <Button buttonText="Sign Up" onPress={handleSignUp} />
+      <Button onPress={handleSignUp}>Sign Up</Button>
 
       <Stack direction="row">
         <Text>Already have an account?</Text>

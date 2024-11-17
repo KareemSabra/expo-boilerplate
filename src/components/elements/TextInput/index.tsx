@@ -1,34 +1,35 @@
-import { useThemeColor } from "@/hooks/useThemeColor";
-import { TextInput as RNTextInput, StyleSheet } from "react-native";
+import useAssets from "@/hooks/useAssets";
+import {
+  TextInput as NativeTextInput,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+} from "react-native";
 
 type TextInputProps = {
   placeholder: string;
   value: string;
   onChangeText: (text: string) => void;
+  style?: StyleProp<TextStyle>;
 };
 
 export default function TextInput({
   placeholder,
   value,
   onChangeText,
+  style,
 }: TextInputProps) {
   // ----------------------------------------------------------------------------------------------------
   // MARK: States & Constants
   // ----------------------------------------------------------------------------------------------------
-  const color = useThemeColor({}, "text");
-  const borderColor = useThemeColor({}, "inputBorder");
-
-  // ----------------------------------------------------------------------------------------------------
-  // MARK: Styles
-  // ----------------------------------------------------------------------------------------------------
+  const { colors } = useAssets();
   const styles = StyleSheet.create({
-    input: {
-      width: "100%",
-      padding: 16,
-      borderRadius: 8,
+    common: {
+      color: colors.primary,
       borderWidth: 1,
-      borderColor,
-      color,
+      borderColor: colors.accent,
+      borderRadius: 10,
+      padding: 10,
     },
   });
 
@@ -36,11 +37,11 @@ export default function TextInput({
   // MARK: Main Component UI
   // ----------------------------------------------------------------------------------------------------
   return (
-    <RNTextInput
+    <NativeTextInput
       placeholder={placeholder}
       value={value}
       onChangeText={onChangeText}
-      style={styles.input}
+      style={[styles.common, style]}
     />
   );
 }
